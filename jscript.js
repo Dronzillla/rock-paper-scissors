@@ -59,14 +59,27 @@ function playRound(playerSelection, computerSelection) {
     return output;
 }
 
-// Play 5 round game.
+// Play 5 round game
 function game () {
-    
+    let rock = "rock";
+    let paper = "paper";
+    let scissors = "scissors";
+    // Loop 5 rounds
     for (let i = 0; i < 5; i++) {        
+        let playerSelection;
+        let dataValidation = 0;
+        // Data validation so user can only put rock, paper, scissors (case insensitive)
+        do {
+            playerSelection = window.prompt("Make your choice: Rock, Paper, Scissors", "Rock");
+            if (playerSelection.toLowerCase() == rock || playerSelection.toLowerCase() == paper || playerSelection.toLowerCase() == scissors) {
+                dataValidation = 1;
+            }
+        }
+        while (dataValidation != 1)
         let roundCount = 1 + i;
-        let playerSelection = window.prompt("Make your choice (Rock, Paper, Scissors", "Rock");
         let computerSelection = getComputerChoice();
         let winner = playRound(playerSelection, computerSelection);
+        // Display results of a game
         console.log(`ROUND ${roundCount}. You chose ${playerSelection} and computer chose ${computerSelection}. ${winner}.`);
     }    
 }
