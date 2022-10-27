@@ -18,7 +18,7 @@ function getComputerChoice() {
 }
 
 // Single round function
-function singleGame(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
     let output = null;
@@ -57,4 +57,16 @@ function singleGame(playerSelection, computerSelection) {
         }
     }
     return output;
+}
+
+// Play 5 round game.
+function game () {
+    
+    for (let i = 0; i < 5; i++) {        
+        let roundCount = 1 + i;
+        let playerSelection = window.prompt("Make your choice (Rock, Paper, Scissors", "Rock");
+        let computerSelection = getComputerChoice();
+        let winner = playRound(playerSelection, computerSelection);
+        console.log(`ROUND ${roundCount}. You chose ${playerSelection} and computer chose ${computerSelection}. ${winner}.`);
+    }    
 }
