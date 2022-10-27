@@ -1,5 +1,5 @@
 // Test if jsciprt works
-console.log("Hello, world!");
+console.log("Write 'game();' in a console to play rock-paper-scissors game!");
 
 // Randomly return Rock Paper Scissors
 function getComputerChoice() {
