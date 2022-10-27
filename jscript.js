@@ -64,6 +64,10 @@ function game () {
     let rock = "rock";
     let paper = "paper";
     let scissors = "scissors";
+    let playerPoints = 0;
+    let computerPoints = 0;
+    let draw = 0;
+
     // Loop 5 rounds
     for (let i = 0; i < 5; i++) {        
         let playerSelection;
@@ -79,7 +83,32 @@ function game () {
         let roundCount = 1 + i;
         let computerSelection = getComputerChoice();
         let winner = playRound(playerSelection, computerSelection);
+        
+        // Count cumulative points of players
+        let roundWinner = winner.slice(4, 5);
+        if (roundWinner == "W") {
+            playerPoints += 1;
+        }
+        else if (roundWinner == "L") {
+            computerPoints += 1;
+        }
+        else {
+            draw += 1;
+        }
+
         // Display results of a game
         console.log(`ROUND ${roundCount}. You chose ${playerSelection} and computer chose ${computerSelection}. ${winner}.`);
-    }    
+        if (i == 4) {
+            if (playerPoints > computerPoints) {
+                console.log("After 5 rounds YOU WIN!")
+            }
+            else if (playerPoints < computerPoints) {
+                console.log("After 5 rounds YOU LOSE :(")
+            }
+            else {
+                console.log("After 5 rounds NOBODY WINS")
+            }
+            console.log(`Your points: ${playerPoints}. Computer points: ${computerPoints}. Draw: ${draw}`);
+        }
+    } 
 }
